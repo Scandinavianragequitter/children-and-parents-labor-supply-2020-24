@@ -1,0 +1,32 @@
+download 2021,2022,2023,2024 ipums acs 1-year data with 
+
+variables: 
+    YEAR        "Census year"
+    SAMPLE      "IPUMS sample identifier"
+    SERIAL      "Household serial number"
+    CBSERIAL    "Original Census Bureau household serial number"
+    HHWT        "Household weight"
+    CLUSTER     "Household cluster for variance estimation"
+    CPI99       "CPI-U adjustment factor to 1999 dollars"
+    STRATA      "Household strata for variance estimation"
+    GQ          "Group quarters status"
+    PERNUM      "Person number in sample unit"
+    PERWT       "Person weight"
+    MOMLOC      "Mother's location in the household"
+    SPLOC       "Spouse's location in household"
+    SEX         "Sex"
+    AGE         "Age"
+    MARST       "Marital status"
+    RACE        "Race [general version]"
+    RACED       "Race [detailed version]"
+    HISPAN      "Hispanic origin [general version]"
+    HISPAND     "Hispanic origin [detailed version]"
+    EDUC        "Educational attainment [general version]"
+    EDUCD       "Educational attainment [detailed version]"
+    EMPSTAT     "Employment status [general version]"
+    EMPSTATD    "Employment status [detailed version]"
+    WKSWORK1    "Weeks worked last year"
+    UHRSWORK    "Usual hours worked per week"
+    INCWAGE     "Wage and salary income"
+
+    
