@@ -70,8 +70,8 @@ Married 0,002 / 0,002 / 0,003.
 
 # TABELLE 7 — OLS- und 2SLS-Schätzungen des Effekts von "mehr als 2 Kindern" auf das Arbeitsangebot
 
-Struktur wie A&E Tabelle 7 (1980, S. 464) und Tabelle 8 (1990): drei Spaltengruppen
-**All women | Married women | Husbands of married women**, je **OLS / 2SLS (same sex)
+Struktur wie A&E Tabelle 7 (1980, S. 464) und Tabelle 8 (1990): zwei Spaltengruppen
+**All women | Married women**, je **OLS / 2SLS (same sex)
 / 2SLS (two boys, two girls)**. `labor_income` in 1995-Dollar. Jede abhängige Variable
 auf ihrer eigenen Stichprobe geschätzt. Koeffizient (Standardfehler).
 
@@ -95,20 +95,6 @@ auf ihrer eigenen Stichprobe geschätzt. Koeffizient (Standardfehler).
 | Hours/week | −5,984 (0,061) | −4,744 (0,936) | −4,591 (0,930) |
 | Labor income | −3.216 (33) | −1.640 (512) | −1.644 (509) |
 
-**Husbands of married women**
-
-| Dependent | OLS | 2SLS (same sex) | 2SLS (2 boys/2 girls) |
-|---|---|---|---|
-| Worked for pay | −0,009 (0,001) | 0,000 (0,009) | −0,002 (0,009) |
-| Weeks worked | −0,901 (0,039) | 0,102 (0,586) | −0,037 (0,582) |
-| Hours/week | 0,090 (0,044) | 0,627 (0,652) | 0,597 (0,648) |
-| Labor income | −1.475 (77) | 511 (1.159) | 459 (1.153) |
-
-**Validierung 1980 vs. Paper (S. 463–464):** all women 2SLS (same sex) Worked
-−0,12, Weeks −5,7, Hours −4,6, Income −1.961 → unsere −0,120 / −5,38 / −4,25 /
-−1.707. Husbands: Weeks worked OLS −0,90 (= Paper −0,90), Worked for pay OLS −0,009
-(Paper "< 1 pp"). 2SLS kleiner als OLS — wie im Paper (S. 463).
-
 ## 1990 (≙ A&E Tabelle 8)
 
 **All women** (N = 485.503)
@@ -129,14 +115,6 @@ auf ihrer eigenen Stichprobe geschätzt. Koeffizient (Standardfehler).
 | Hours/week | −6,154 (0,070) | −3,804 (1,049) | −3,802 (1,049) |
 | Labor income | −3.594 (45) | −2.896 (704) | −2.891 (704) |
 
-**Husbands of married women**
-
-| Dependent | OLS | 2SLS (same sex) | 2SLS (2 boys/2 girls) |
-|---|---|---|---|
-| Worked for pay | −0,012 (0,001) | −0,002 (0,011) | −0,002 (0,011) |
-| Weeks worked | −1,055 (0,050) | −0,238 (0,729) | −0,228 (0,729) |
-| Hours/week | −0,103 (0,053) | −0,145 (0,770) | −0,138 (0,770) |
-| Labor income | 397 (101) | 666 (1.484) | 680 (1.484) |
 
 ## 2021–24 (Erweiterung, gleiche Struktur)
 
@@ -158,15 +136,6 @@ auf ihrer eigenen Stichprobe geschätzt. Koeffizient (Standardfehler).
 | Hours/week | −5,792 (0,131) | −5,541 (2,249) | −5,527 (2,249) |
 | Labor income | −3.688 (132) | −2.665 (2.277) | −2.631 (2.278) |
 
-**Husbands of married women**
-
-| Dependent | OLS | 2SLS (same sex) | 2SLS (2 boys/2 girls) |
-|---|---|---|---|
-| Worked for pay | −0,002 (0,002) | 0,021 (0,027) | 0,021 (0,027) |
-| Weeks worked | −0,336 (0,100) | 1,149 (1,704) | 1,179 (1,704) |
-| Hours/week | 0,120 (0,102) | −0,811 (1,735) | −0,797 (1,735) |
-| Labor income | 885 (216) | 3.094 (3.641) | 3.127 (3.640) |
-
 ---
 
 
@@ -182,7 +151,7 @@ OLS-Schätzer, 2SLS-Beteiligung, Ehemänner-Wochen. Restliche Abweichungen:
 | Verheiratete 1980-Stichprobe weicht ab (Diff. 0,061 vs. 0,068) | A&E-Definition = "einmal verheiratet, bei Erstgeburt verheiratet"; wir nutzen `SPLOC>0`. Braucht `MARRNO`/`AGEMARR` — **nicht im Extrakt** | **S. 454** und Tabelle 2 **Notes, S. 455** |
 | labor_income nicht exakt | A&E in 1995-Dollar mit eigenem Topcoding ($75.000 in 1980); Topcoding-Regeln unterscheiden sich | Tabelle 2 **S. 455** ("in 1995 dollars"); **Fußnote S. 456** (Topcoding) |
 
-Die früheren großen Abweichungen waren **Methodenfehler** (ungewichtet, `EMPSTAT`
+Frühere große Abweichungen waren **Methodenfehler** (ungewichtet, `EMPSTAT`
 statt "worked last year", fehlender Infant-Ausschluss) und sind behoben. Die Reste
 sind **Daten-Grenzen** (A&E-eigener Match; Heirats-Variablen nicht im Extrakt).
 
