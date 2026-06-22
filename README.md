@@ -10,6 +10,8 @@ Unterschiede bilden die *Zeit* ab, nicht die Methode.
 
 ## Daten
 
+Genaueres zu den heruntergeladenen Variablen und dem Dataset in "steps" 
+
 | Extrakt | Sample | Rolle |
 |---|---|---|
 | `usa_00001` | ACS 2021–24 (1-Jahr) | Erweiterung "heute" |
@@ -138,20 +140,60 @@ auf ihrer eigenen Stichprobe geschätzt. Koeffizient (Standardfehler).
 
 ---
 
+# Fazit
 
-# Diskrepanzen zum Paper — Gründe & Belegstellen
+## 1. Der OLS-Befund: Der Fertilitäts-Effekt auf das Arbeitsangebot schrumpft
 
-Übereinstimmend: Geschlechtszusammensetzung, alle Arbeitsangebots-Mittelwerte,
-OLS-Schätzer, 2SLS-Beteiligung, Ehemänner-Wochen. Restliche Abweichungen:
+Die OLS-Schätzer sind über alle drei Epochen **präzise** (s.e. ≈ 0,001–0,003) und
+fallen klar ab. Der Zusammenhang zwischen einem dritten Kind und dem Arbeitsangebot
+hat sich in 40 Jahren deutlich abgeschwächt (*All women*):
 
-| Diskrepanz | Grund | Stelle im Paper |
-|---|---|---|
-| Frühere Fertilität ~0,03 zu niedrig (behoben) | Ausschluss "zweites Kind < 1 Jahr" fehlte; nach Einbau 0,407 vs. 0,402 | Tabelle 2 **Notes, S. 455** ("…except for women whose second child is less than a year old") |
-| Stichprobe N ~21 % höher; Panel-A-Niveau (0,62 vs. 0,69) | A&E bauten 1980 einen **eigenen** Mutter-Kind-Haushaltsmatch; IPUMS `MOMLOC` ist ein anderer Algorithmus. Betrifft nur das *Niveau*, nicht Differenzen/Koeffizienten | **S. 456** ("the 1990 match is probably not as good as the 1980 match … data problems related to the match") |
-| Verheiratete 1980-Stichprobe weicht ab (Diff. 0,061 vs. 0,068) | A&E-Definition = "einmal verheiratet, bei Erstgeburt verheiratet"; wir nutzen `SPLOC>0`. Braucht `MARRNO`/`AGEMARR` — **nicht im Extrakt** | **S. 454** und Tabelle 2 **Notes, S. 455** |
-| labor_income nicht exakt | A&E in 1995-Dollar mit eigenem Topcoding ($75.000 in 1980); Topcoding-Regeln unterscheiden sich | Tabelle 2 **S. 455** ("in 1995 dollars"); **Fußnote S. 456** (Topcoding) |
+| Variable | 1980 | 1990 | 2021–24 |
+|---|---|---|---|
+| Worked for pay | −0,171 | −0,147 | **−0,119** |
+| Weeks worked | −8,695 | −8,316 | **−6,774** |
+| Hours/week | −6,523 | −6,429 | **−5,299** |
 
-Frühere große Abweichungen waren **Methodenfehler** (ungewichtet, `EMPSTAT`
-statt "worked last year", fehlender Infant-Ausschluss) und sind behoben. Die Reste
-sind **Daten-Grenzen** (A&E-eigener Match; Heirats-Variablen nicht im Extrakt).
+Das ist unser **belastbarstes Ergebnis**: Die *Korrelation* zwischen "mehr als 2 Kindern"
+und reduzierter Erwerbstätigkeit ist heute spürbar schwächer als bei A&E — plausibel
+durch Kinderbetreuung, Homeoffice und veränderte Normen.
+
+## 2. Die OLS-Grenze: Korrelation, nicht Kausalität
+
+OLS bleibt aber **verzerrt** (Endogenität der Fertilität, A&E S. 463): Frauen, die ein
+drittes Kind *wählen*, unterscheiden sich in unbeobachteten Merkmalen (Präferenzen,
+Partnereinkommen), die unabhängig das Arbeitsangebot senken (Selektion / omitted
+variables), und die Wirkungsrichtung ist nicht eindeutig (reverse causality). Genau
+deshalb das Instrument: A&E zeigten, dass **2SLS < OLS** ist — OLS *übertreibt* den
+Kausaleffekt (S. 463: "OLS estimates appear to exaggerate the causal effect"). Unsere
+1980/1990-Replikation reproduziert das sauber (1980 *All*, Worked for pay: OLS −0,171
+→ 2SLS −0,120).
+
+## 3. Warum 2SLS in den 2020ern versagt — zwei Probleme
+
+In 2021–24 (*All women*) ist 2SLS **größer** als OLS (−0,179 vs. −0,119) — die
+*Umkehrung* des A&E-Befunds. Das ist **kein** ökonomischer Befund, sondern Artefakt
+zweier zusammenwirkender Schwächen:
+
+- **Schwaches Instrument.** Der Hebel ist "erste zwei Kinder gleichen Geschlechts → drittes
+  Kind". Dessen Stärke (1. Stufe) sinkt: Differenz in Tabelle 3 Panel B von **0,056 (1980)
+  auf 0,045 (2021–24)** — und auf niedrigerer Basis, weil heute überhaupt weniger Familien
+  ein drittes Kind bekommen. Die Geschlechtsmix-Präferenz, auf der die Identifikation ruht,
+  verschwindet mit der niedrigen Fertilität.
+- **Kleinere, dünnere Stichprobe.** N fällt von **478.469 (1980) auf 209.574 (2021–24)**
+  (ACS-1-Jahr statt 5%-Census). Weniger Beobachtungen treffen genau die ohnehin
+  fragile IV-Schätzung am härtesten.
+
+Folge: Der 2SLS-Standardfehler ist ~20× so groß wie der von OLS (−0,179 **(0,056)** vs.
+−0,119 **(0,003)**). Der OLS-Punktschätzer liegt **innerhalb** des 2SLS-Konfidenzintervalls
+— OLS und 2SLS sind 2021–24 **statistisch nicht unterscheidbar**. Die scheinbare Umkehr
+ist "Noise". 
+
+## 4. Schlussfolgerung
+
+A&Es Identifikationsstrategie funktionierte 1980/90 hervorragend. In der Niedrig-Fertilitäts-Welt der 2020er ist das Same-sex-Instrument zu schwach und die Stichprobe zu klein für einen glaubwürdigen Kausaleffekt. Für heute
+gilt daher: Wir können den **Rückgang des *Zusammenhangs*** sauber zeigen (OLS), aber den
+**Kausaleffekt nicht mehr präzise messen** (2SLS) — OLS ist verzerrt, IV ist zu noisy.
+Das ist selbst ein interessanter methodischer Befund: ein cleveres Instrument
+der 1990er überlebt nicht automatisch in einer veränderten demografischen Welt.
 
